@@ -11,7 +11,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "ING_USER")
-public class User {
+public class User extends BaseModel{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,7 +27,7 @@ public class User {
 	private String gender;
 	
 	@Column(name="EMPLOYEE_ID")
-	private Long employeeId;
+	private String employeeId;
 	
 	 
 	@OneToOne(cascade = CascadeType.ALL)
@@ -66,11 +66,11 @@ public class User {
 		this.gender = gender;
 	}
 
-	public Long getEmployeeId() {
+	public String getEmployeeId() {
 		return employeeId;
 	}
 
-	public void setEmployeeId(Long employeeId) {
+	public void setEmployeeId(String employeeId) {
 		this.employeeId = employeeId;
 	}
 

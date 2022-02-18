@@ -1,0 +1,61 @@
+{
+	"info": {
+		"_postman_id": "cbbd9683-3b1b-4e6f-98f6-da4ce25718fb",
+		"name": "ING_USER_MANAGEMENT_SERVICE_SMOKE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get userdetails",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/userdetails/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"userdetails",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update userdetails",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"MR\",\n    \"firstn\": \"Mark\",\n    \"gender\": \"MALE\",\n    \"empid\": 123,\n    \"address\": {\n        \"street\": \"Tallong\",\n        \"city\": \"Tollong\",\n        \"state\": \"AU\",\n        \"postcode\": 343\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/userdetails/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"userdetails",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

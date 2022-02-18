@@ -1,25 +1,38 @@
 package com.ing.usermanagement.dto;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@XmlRootElement(name = "user")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class UserDto {
 
-	private static final long serialVersionUID =1L;
-	
-	@JsonProperty("title")
+	private static final long serialVersionUID = 1L;
+
+	private Long id;
 	private String title;
-	
-	@JsonProperty("firstn")
 	private String firstn;
-	
-	@JsonProperty("gender")
 	private String gender;
-	
-	@JsonProperty("empid")
-	private Long empid;
-	
-	@JsonProperty("address")
+	private String empid;
+
 	private AddressDto addressDto;
+
+	public UserDto() {
+
+	}
+
+	public UserDto(Long id, String title, String firstn, String gender, String empid, AddressDto addressDto) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.firstn = firstn;
+		this.gender = gender;
+		this.empid = empid;
+		this.addressDto = addressDto;
+	}
 
 	public String getTitle() {
 		return title;
@@ -45,14 +58,6 @@ public class UserDto {
 		this.gender = gender;
 	}
 
-	public Long getEmpid() {
-		return empid;
-	}
-
-	public void setEmpid(Long empid) {
-		this.empid = empid;
-	}
-
 	public AddressDto getAddressDto() {
 		return addressDto;
 	}
@@ -64,5 +69,15 @@ public class UserDto {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	public String getEmpid() {
+		return empid;
+	}
+
+	public void setEmpid(String empid) {
+		this.empid = empid;
+	}
+	
+	
 
 }

@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "ING_USER_ADDRESS")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class Address {
+public class Address extends BaseModel {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

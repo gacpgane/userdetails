@@ -1,11 +1,31 @@
 package com.ing.usermanagement.dto;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "address")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class AddressDto {
 
+	private Long id;
 	private String street;
 	private String city;
 	private String state;
 	private Integer postcode;
+
+	public AddressDto() {
+
+	}
+
+	public AddressDto(Long id, String street, String city, String state, Integer postcode) {
+		super();
+		this.id = id;
+		this.street = street;
+		this.city = city;
+		this.state = state;
+		this.postcode = postcode;
+	}
 
 	public String getStreet() {
 		return street;
