@@ -17,6 +17,11 @@ import com.ing.usermanagement.repository.UserRepository;
 import com.ing.usermanagement.service.UserManagementService;
 
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+/**
+ * 
+ * @author prabuddha
+ *
+ */
 
 @Service
 public class UserManagementServiceImpl implements UserManagementService{

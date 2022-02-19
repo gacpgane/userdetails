@@ -9,6 +9,11 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+/**
+ * 
+ * @author prabuddha
+ *
+ */
 @MappedSuperclass
 public class BaseModel {
 

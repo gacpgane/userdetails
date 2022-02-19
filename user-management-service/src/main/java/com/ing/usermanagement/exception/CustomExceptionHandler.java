@@ -11,6 +11,11 @@ import org.springframework.web.context.request.WebRequest;
 
 import com.ing.usermanagement.dto.ErrorDto;
 
+/**
+ * 
+ * @author prabuddha
+ *
+ */
 @ControllerAdvice
 public class CustomExceptionHandler {
 

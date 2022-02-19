@@ -5,6 +5,11 @@ import com.ing.usermanagement.dto.UserDto;
 import com.ing.usermanagement.model.Address;
 import com.ing.usermanagement.model.User;
 
+/**
+ * 
+ * @author prabuddha
+ *
+ */
 public class UserMapperUtil {
 
 	public static User toUser(UserDto dto,User user) {

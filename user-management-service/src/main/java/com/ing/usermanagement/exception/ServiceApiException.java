@@ -2,6 +2,11 @@ package com.ing.usermanagement.exception;
 
 import org.springframework.http.HttpStatus;
 
+/**
+ * 
+ * @author prabuddha
+ *
+ */
 public class ServiceApiException extends RuntimeException {
 
 	private String errorCode;

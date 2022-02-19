@@ -1,30 +1,44 @@
 package com.ing.usermanagement.dto;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
-@XmlRootElement(name = "address")
-@XmlAccessorType(XmlAccessType.FIELD)
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+/**
+ * 
+ * @author prabuddha
+ *
+ */
+@JsonInclude(Include.NON_NULL)
 public class AddressDto {
 
-	private Long id;
+	private static final long serialVersionUID=1L;
+	
+	@JsonProperty
+	@Valid
+	@NotNull(message = "Street is required")
 	private String street;
+	
+	@JsonProperty
+	@Valid
+	@NotNull(message = "City is required")
 	private String city;
+	
+	@JsonProperty
+	@Valid
+	@NotNull(message = "State is required")
 	private String state;
+	
+	@JsonProperty
+	@Valid
+	@NotNull(message = "State is required")
 	private Integer postcode;
 
 	public AddressDto() {
 
-	}
-
-	public AddressDto(Long id, String street, String city, String state, Integer postcode) {
-		super();
-		this.id = id;
-		this.street = street;
-		this.city = city;
-		this.state = state;
-		this.postcode = postcode;
 	}
 
 	public String getStreet() {

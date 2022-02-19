@@ -1,10 +1,12 @@
 package com.ing.usermanagement.dto;
 
 import java.util.List;
-
-import javax.xml.bind.annotation.XmlRootElement;
-
-@XmlRootElement(name = "error")
+ 
+/**
+ * 
+ * @author prabuddha
+ *
+ */
 public class ErrorDto {
 
 	private String message;

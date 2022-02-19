@@ -1,37 +1,49 @@
 package com.ing.usermanagement.dto;
-
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
-
+ 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@XmlRootElement(name = "user")
-@XmlAccessorType(XmlAccessType.FIELD)
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+ 
+/**
+ * 
+ * @author prabuddha
+ *
+ */
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown=true)
+
 public class UserDto {
 
 	private static final long serialVersionUID = 1L;
 
-	private Long id;
+	@JsonProperty
+	@Valid
+	@NotNull(message = "Title is required")
 	private String title;
+	
+	@JsonProperty
+	@Valid
+	@NotNull(message = "First Name is required")
 	private String firstn;
+	
+	@JsonProperty
+	@Valid
+	@NotNull(message = "Gender is required")
 	private String gender;
+	
+	@JsonProperty
+	@Valid
+	@NotNull(message = "Employee ID is required")
 	private String empid;
 
+	@JsonProperty("address") 
 	private AddressDto addressDto;
 
 	public UserDto() {
 
-	}
-
-	public UserDto(Long id, String title, String firstn, String gender, String empid, AddressDto addressDto) {
-		super();
-		this.id = id;
-		this.title = title;
-		this.firstn = firstn;
-		this.gender = gender;
-		this.empid = empid;
-		this.addressDto = addressDto;
 	}
 
 	public String getTitle() {
@@ -58,6 +70,7 @@ public class UserDto {
 		this.gender = gender;
 	}
 
+	
 	public AddressDto getAddressDto() {
 		return addressDto;
 	}
