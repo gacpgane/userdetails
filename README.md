@@ -179,12 +179,12 @@ Transaction Rollback handling.
 
 # Unit tests, Integration and Consumer Contract testing
 
-- UserControllerTest - e2e integration test
-- UserManagementRepositoryTest - db integration test
-- UsermanagementServiceTest - Junit test
-- ING_USER_MANAGEMENT_SERVICE_SMOKE.postman_collection.json - smoke suite
-- pact test consumer contract generation and validation - refer consumer-user-management-service 
-- pact test provider validation was causing error, please uncomment PactVerificationTest to verify [its giving an issue due to security validations :)]
+- For e2e Integration testing please refer - UserControllerTest.java
+- DB Integration testing - UserManagementRepositoryTest.java
+- Other Junit tests UsermanagementServiceTest.java
+- Postman smoke suite - ING_USER_MANAGEMENT_SERVICE_SMOKE.postman_collection.json - 
+- pact test consumer contract testing - refer consumer-user-management-service 
+- pact test provider contract testing - validation was causing error, please uncomment PactVerificationTest to verify [its giving an issue due to security validations :)]
 pact folder is located under user-management-service.
 
 # Basic User authentication and verification
