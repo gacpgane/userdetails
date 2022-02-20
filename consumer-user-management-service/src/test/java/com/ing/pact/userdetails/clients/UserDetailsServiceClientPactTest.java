@@ -16,18 +16,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.web.client.HttpClientErrorException;
 
 import com.ing.pact.userdetails.clients.UserDetailsServiceClient;
-import com.ing.pact.userdetails.clients.UserDetailsServiceResponse;
 import com.ing.pact.userdetails.models.User;
 import org.springframework.http.HttpStatus;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -44,6 +40,7 @@ class UserDetailsServiceClientPactTest {
 		headers.put("Content-Type", "application/json");
 		return builder.given("Get User Details").uponReceiving("valid user id from provider").method("GET")
 				.path("/api/userdetails/1232854").willRespondWith().headers(headers).status(200)
+				.matchHeader("Authorization", "Bearer [a-zA-Z0-9=\\+/]+", "Bearer AAABd9yHUjI=")
 				.body(LambdaDsl.newJsonBody((object) -> {
 					object.stringType("title", "MR");
 					object.stringType("firstn", "test");
@@ -66,9 +63,6 @@ class UserDetailsServiceClientPactTest {
 		User user = userDetailsServiceClient.getUserDetailsById(1232854l);
 		User assertUser = new User();
 		assertThat(user.getTitle(),is(equalTo("MR")));
-		// assertUser.setT
-		// assertThat(user, is(equalTo(new User(10L, "28 Degrees",
-		// "CREDIT_CARD", "v1", "CC_001"))));
 	}
 
 	@Pact(consumer = "consumerUserDetails")
