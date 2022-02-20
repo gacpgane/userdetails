@@ -1,18 +1,18 @@
 package com.ing.usermanagement.exception;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus; 
- 
+import org.springframework.web.bind.annotation.ResponseStatus;
+
 /**
  * 
  * @author prabuddha
  *
  */
 @ResponseStatus(HttpStatus.NOT_FOUND)
-public class ResourceNotFoundException extends RuntimeException{
+public class ResourceNotFoundException extends RuntimeException {
 
-	 public ResourceNotFoundException(String exception){
-		 super(exception);
-	 }
+	public ResourceNotFoundException(String exception) {
+		super(exception);
+	}
 
 }

@@ -47,15 +47,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 
 	@Override
-    public void configure(WebSecurity web) throws Exception {
-        web
-            .ignoring()
-            .antMatchers("/h2-console/**");
-    }
+	public void configure(WebSecurity web) throws Exception {
+		web.ignoring().antMatchers("/h2-console/**");
+	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		 http.httpBasic().authenticationEntryPoint(authenticationEntryPoint).and().authorizeRequests()
+		http.httpBasic().authenticationEntryPoint(authenticationEntryPoint).and().authorizeRequests()
 				.antMatchers(HttpMethod.PUT, "/api/userdetails/**")
 				.access("hasAuthority('WRITE_DATA') and isAuthenticated()")
 				.antMatchers(HttpMethod.GET, "/api/userdetails/**")

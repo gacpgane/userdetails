@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  *
  */
 @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-public class DataBaseServiceUnavailableException extends RuntimeException{
+public class DataBaseServiceUnavailableException extends RuntimeException {
 
-	public DataBaseServiceUnavailableException(String exception){
+	public DataBaseServiceUnavailableException(String exception) {
 		super(exception);
 	}
-	 
+
 }

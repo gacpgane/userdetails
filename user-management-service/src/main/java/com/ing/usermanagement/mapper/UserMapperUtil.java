@@ -12,31 +12,29 @@ import com.ing.usermanagement.model.User;
  */
 public class UserMapperUtil {
 
-	public static User toUser(UserDto dto,User user) {
+	public static User toUser(UserDto dto, User user) {
 		user.setTitle(dto.getTitle());
 		user.setEmployeeId(Long.valueOf(dto.getEmpid()));
 		user.setFirstName(dto.getFirstn());
 		user.setGender(dto.getGender());
-		
-		Address address=new Address();
+
+		Address address = new Address();
 		address.setCity(dto.getAddressDto().getCity());
 		address.setPostcode(dto.getAddressDto().getPostcode());
 		address.setState(dto.getAddressDto().getState());
-		
+
 		user.setAddress(address);
- 
+
 		return user;
 	}
-	 
-	
-	public static UserDto toUserDto(User user,UserDto userDto) {
+
+	public static UserDto toUserDto(User user, UserDto userDto) {
 		userDto.setEmpid(String.valueOf(user.getEmployeeId()));
 		userDto.setFirstn(user.getFirstName());
 		userDto.setGender(user.getGender());
 		userDto.setTitle(user.getTitle());
-		
-		AddressDto addressDto=new 
-				AddressDto();
+
+		AddressDto addressDto = new AddressDto();
 		addressDto.setCity(user.getAddress().getCity());
 		addressDto.setPostcode(user.getAddress().getPostcode());
 		addressDto.setState(user.getAddress().getState());
@@ -44,6 +42,5 @@ public class UserMapperUtil {
 		userDto.setAddressDto(addressDto);
 		return userDto;
 	}
-	
-	 
+
 }

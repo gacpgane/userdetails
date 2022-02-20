@@ -3,7 +3,9 @@
  */
 package com.ing.usermanagement.model;
 
-import javax.persistence.*; 
+import javax.persistence.*;
+
+import lombok.Data; 
 
 /**
  * @author prabuddha
@@ -11,6 +13,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "ING_USER")
+@Data
 public class User extends BaseModel{
 
 	@Id
@@ -29,60 +32,8 @@ public class User extends BaseModel{
 	@Column(name="EMPLOYEE_ID")
 	private long employeeId;
 	
-	 
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ING_USER_ADDRESS_ID", referencedColumnName = "ID")
 	private Address address;
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-
-	public long getEmployeeId() {
-		return employeeId;
-	}
-
-	public void setEmployeeId(long employeeId) {
-		this.employeeId = employeeId;
-	}
-
-	public Address getAddress() {
-		return address;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
-	}
-	
-	
-	
 	
 }

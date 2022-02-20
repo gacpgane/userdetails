@@ -13,6 +13,7 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
@@ -48,17 +49,29 @@ public class UserControllerTest {
 		assertEquals(response.getBody().getEmpid(),"1232854");
 		
 	}
+	
+	@Test
+	public void getUserDetails401() throws MalformedURLException {
+		log.debug("-------- UserControllerTest getUserDetails 401 -----------");
+		
+		TestRestTemplate testRestTemplate = new TestRestTemplate();
+		 
+		ResponseEntity<String> response = testRestTemplate.withBasicAuth(
+		  "user123", "user").getForEntity(new URL("http://localhost:" + port + "/api/userdetails/1232854").toString(), 
+				  String.class);
+		 
+		assertEquals(response.getStatusCode(),HttpStatus.UNAUTHORIZED);
+		
+	}
 
 	@Test
 	public void updateUserDetails() throws RestClientException, MalformedURLException {
-		//RestTemplate restTemplate= new RestTemplate();
-		TestRestTemplate testRestTemplate = new TestRestTemplate();
 		
-		 
+		TestRestTemplate testRestTemplate = new TestRestTemplate();
 		HttpHeaders headers = new HttpHeaders();
 	    headers.setContentType(MediaType.APPLICATION_JSON);
+	   
 	    JSONObject user = new JSONObject();
-	     
 	    user.put("title", "MR");
 	    user.put("firstn", "John123");
 	    user.put("gender", "MALE");
@@ -84,6 +97,5 @@ public class UserControllerTest {
 	    assertEquals(response.getBody().getFirstn(),"John123");
 		
 	}
-	
 	
 }

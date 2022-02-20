@@ -16,11 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ing.usermanagement.dto.ErrorDto;
 import com.ing.usermanagement.dto.UserDto;
-import com.ing.usermanagement.exception.ServiceApiException;
 import com.ing.usermanagement.service.UserManagementService;
- 
+
 /**
  * @author prabuddha
  *
@@ -35,16 +33,15 @@ public class UserController {
 
 	@GetMapping("/userdetails/{empid}")
 	public ResponseEntity<Object> getUserDetails(@PathVariable("empid") long empId) {
-			UserDto userDto = userManagementService.getUser(empId);
-			return new ResponseEntity<>(userDto, HttpStatus.OK);
+		UserDto userDto = userManagementService.getUser(empId);
+		return new ResponseEntity<>(userDto, HttpStatus.OK);
 	}
 
 	@PutMapping("/userdetails/{empid}")
-	public ResponseEntity<Object> updateUserDetails(@PathVariable("empid") long empId,@Valid @RequestBody  UserDto userDto) {	 
-			UserDto dto=userManagementService.updateUser(empId, userDto);	
-			return new ResponseEntity<>(userDto, HttpStatus.OK);
+	public ResponseEntity<Object> updateUserDetails(@PathVariable("empid") long empId,
+			@Valid @RequestBody UserDto userDto) {
+		UserDto dto = userManagementService.updateUser(empId, userDto);
+		return new ResponseEntity<>(userDto, HttpStatus.OK);
 	}
-	
-	
-	 
+
 }
