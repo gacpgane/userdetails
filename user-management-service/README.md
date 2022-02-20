@@ -51,12 +51,12 @@ EmpId considered as unique and further seperate index added to the column, howev
  
 other fields data type and length values are selected to satisfy minimum space usage of DB and consideration of practical lengths ex:postcode 
 
-all the values coming from client will be stored as it is, there will no application of changing text to upper or lower case.
+all the values coming from client will be stored as it is in the database and there will be no application of changing text to upper or lower case.
 ex: mr -> mr, male->male , female->female
  
 
 Error message structure
-errorCode is mainly to utilise in observability platform integration and build better insights on application behaviour 
+errorCode introduced mainly to utilise in observability platform integration and build better insights on application behaviour 
 {
     "message": "Invalid Request",
     "errorCode": "RC_INVR",
@@ -107,6 +107,26 @@ expected result:
 
 # Implement the entry/exit logging
 Refer LoggingAspect.java @Around applied on application package pointcuts
+
+
+# Unit tests, Integration and Consumer Contract testing
+UserControllerTest - e2e integration test
+UserManagementRepositoryTest - db integration test
+UsermanagementServiceTest - Junit test
+ING_USER_MANAGEMENT_SERVICE_SMOKE.postman_collection.json - smoke suite
+pact test - pending.
+
+
+
+
+# Basic User authentication and verification
+Use following test cases to validate this feature
+401 - GET_USER_DETAILS  - correct username invalid password
+401 - GET_USER_DETAILS (invalid username) -invalid username
+401 - PUT_UPDATE_USER_DETAILS - incorrect username and password
+403 - PUT_UPDATE_USER_DETAILS - User with USER role not allowed
+200 - GET_USER_DETAILS(admin) - allowed for admin
+
 
 
 

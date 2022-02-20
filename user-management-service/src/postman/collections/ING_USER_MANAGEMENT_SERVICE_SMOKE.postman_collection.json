@@ -114,6 +114,42 @@
 			"response": []
 		},
 		{
+			"name": "401 - GET_USER_DETAILS (invalid username)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "user1",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "user12",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/userdetails/1232854",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"userdetails",
+						"1232854"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "400 - GET_USER_DETAILS_(invalid userid)",
 			"request": {
 				"auth": {
@@ -423,7 +459,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"title\": \"mrs\",\n    \"firstn\": \"Rossie\",\n    \"gender\": \"female\",\n    \"empid\": \"1232856\",\n    \"address\": {\n        \"street\": \"Charlotte Street\",\n        \"city\": \"Brisbane\",\n        \"state\": \"QlD\",\n        \"postcode\": 4412\n    }\n}",
+					"raw": "{\n    \"title\": \"mrs\",\n    \"firstn\": \"Rossi\",\n    \"gender\": \"female\",\n    \"empid\": \"1232856\",\n    \"address\": {\n        \"street\": \"Charlotte Street\",\n        \"city\": \"Brisbane\",\n        \"state\": \"QlD\",\n        \"postcode\": 4412\n    }\n}",
 					"options": {
 						"raw": {
 							"language": "json"
