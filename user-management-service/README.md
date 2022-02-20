@@ -41,77 +41,71 @@ password: admin
 url: http://localhost:8080/h2-ui
 
 # Project Structure
-src/main/java
-com
- +- ing
-     +- usermanagement
-         +- UserManagementServiceApplication.java
-         |
-         +- controller
-         |   +- UserController
-         |
-         +- service
-             +- UserManagementService.java
-             |
-             +- impl
-                +- UserManagementServiceImpl.java
-         |
-         +- repository
-             +- UserRepository.java
-         |
-         +- model
-             +- BaseModel.java
-             +- Address.java
-             +- User.java
-         +- dto
-             +- AddressDto.java
-             +- UserDto.java
-             +- User.java
-         +- mapper
-             +- UserMapperUtil.java
-         + exception
-             +- CustomExceptionHandler.java
-         + aop
-             +- LoggingAspect.java
-         + security 
-             +- SecurityConfig.java
-             +- UserManagementAuthenticationEntryPoint.java
-             
-src/test/java
+
+├── HELP.md
+├── README.md
+├── mvnw
+├── mvnw.cmd
+├── pom.xml
+└── src
+    ├── main
+    │   ├── java
+    │   │   └── com
+    │   │       └── ing
+    │   │           └── usermanagement
+    │   │               ├── UserManagementServiceApplication.java
+    │   │               ├── aop
+    │   │               │   └── LoggingAspect.java
+    │   │               ├── controller
+    │   │               │   └── UserController.java
+    │   │               ├── dto
+    │   │               │   ├── AddressDto.java
+    │   │               │   ├── ErrorDto.java
+    │   │               │   └── UserDto.java
+    │   │               ├── exception
+    │   │               │   ├── CustomExceptionHandler.java
+    │   │               │   ├── DataBaseServiceUnavailableException.java
+    │   │               │   ├── ResourceNotFoundException.java
+    │   │               │   └── ServiceApiException.java
+    │   │               ├── mapper
+    │   │               │   └── UserMapperUtil.java
+    │   │               ├── model
+    │   │               │   ├── Address.java
+    │   │               │   ├── BaseModel.java
+    │   │               │   └── User.java
+    │   │               ├── repository
+    │   │               │   └── UserRepository.java
+    │   │               ├── security
+    │   │               │   ├── SecurityConfig.java
+    │   │               │   └── UserManagementAuthenticationEntryPoint.java
+    │   │               └── service
+    │   │                   ├── UserManagementService.java
+    │   │                   └── impl
+    │   │                       └── UserManagementServiceImpl.java
+    │   └── resources
+    │       ├── application-test.properties
+    │       ├── application.properties
+    │       ├── data.sql
+    │       └── schema.sql
+    ├── postman
+    │   └── collections
+    │       └── ING_USER_MANAGEMENT_SERVICE_SMOKE.postman_collection.json
+    └── test
+        └── java
+            └── com
+                └── ing
+                    └── usermanagement
+                        ├── BaseTest.java
+                        ├── contract
+                        │   ├── UserDetailsRequestResponsePact.java
+                        │   └── UsermanagementContractTest.java
+                        ├── controller
+                        │   └── UserControllerTest.java
+                        ├── repository
+                        │   └── UserManagementRepositoryTest.java
+                        └── service
 
 .
-└── com
-    └── ing
-        └── usermanagement
-            ├── UserManagementServiceApplication.java
-            ├── aop
-            │   └── LoggingAspect.java
-            ├── controller
-            │   └── UserController.java
-            ├── dto
-            │   ├── AddressDto.java
-            │   ├── ErrorDto.java
-            │   └── UserDto.java
-            ├── exception
-            │   ├── CustomExceptionHandler.java
-            │   ├── DataBaseServiceUnavailableException.java
-            │   ├── ResourceNotFoundException.java
-            │   └── ServiceApiException.java
-            ├── mapper
-            │   └── UserMapperUtil.java
-            ├── model
-            │   ├── Address.java
-            │   ├── BaseModel.java
-            │   └── User.java
-            ├── repository
-            │   └── UserRepository.java
-            ├── security
-            │   ├── SecurityConfig.java
-            │   └── UserManagementAuthenticationEntryPoint.java
-            └── service
-                ├── UserManagementService.java
-                └── impl
-                    └── UserManagementServiceImpl.java
 
 
 
