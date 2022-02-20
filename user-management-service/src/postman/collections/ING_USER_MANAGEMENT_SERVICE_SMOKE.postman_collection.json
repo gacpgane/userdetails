@@ -42,6 +42,42 @@
 			"response": []
 		},
 		{
+			"name": "200 - GET_USER_DETAILS (admin)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/userdetails/1232854",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"userdetails",
+						"1232854"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "401 - GET_USER_DETAILS",
 			"request": {
 				"auth": {
@@ -150,6 +186,42 @@
 			"response": []
 		},
 		{
+			"name": "500 - GET_USER_DETAILS (Circuit breaker)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "user123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user123",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/userdetails/1232854",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"userdetails",
+						"1232854"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "200 - PUT_UPDATE_USER_DETAILS",
 			"request": {
 				"auth": {
@@ -208,6 +280,51 @@
 						{
 							"key": "username",
 							"value": "adm",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"mrs\",\n    \"firstn\": \"Rossie\",\n    \"gender\": \"female\",\n    \"empid\": \"1232856\",\n    \"address\": {\n        \"street\": \"Charlotte Street\",\n        \"city\": \"Brisbane\",\n        \"state\": \"QlD\",\n        \"postcode\": 4412\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/userdetails/1232856",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"userdetails",
+						"1232856"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "403 - PUT_UPDATE_USER_DETAILS (User Role)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "user123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user123",
 							"type": "string"
 						}
 					]
@@ -371,6 +488,52 @@
 						"1232856"
 					]
 				}
+			},
+			"response": []
+		},
+		{
+			"name": "500 - PUT_UPDATE_USER_DETAILS_(Circuit Breaker)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"mrs\",\n    \"firstn\": \"Rossie\",\n    \"gender\": \"female\",\n    \"empid\": \"1232856\",\n    \"address\": {\n        \"street\": \"Charlotte Street\",\n        \"city\": \"Brisbane\",\n        \"state\": \"QlD\",\n        \"postcode\": 4412\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/userdetails/1232856",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"userdetails",
+						"1232856"
+					]
+				},
+				"description": "Drop the table using h2 console before hitting"
 			},
 			"response": []
 		}

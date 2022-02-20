@@ -17,7 +17,7 @@ mvn spring-boot:run
 GET http://localhost:8080/api/userdetails/{id}
 PUT http://localhost:8080/api/userdetails/{id}
 
-# Testing the APIs using Postman
+# Testing the APIs using Postman + Basic Authentication
 Use Postman collection under path src/postman/collections to test the application
 ING_USER_MANAGEMENT_SERVICE_SMOKE.postman_collection.json
 
@@ -38,7 +38,7 @@ Password : admin
 jdbc url: jdbc:h2:mem:user_db
 username: admin
 password: admin
-url: http://localhost:8080/h2-ui
+url: http://localhost:8080/h2-console
 
 # Assumptions and Approaches 
 empid field is mapped to data type NUMERIC(10), because it's mentioned that to validate the user id to have only numeric. Given empid in the payload is length of 7 and above 1 million
@@ -73,7 +73,8 @@ errorCode is mainly to utilise in observability platform integration and build b
     ]
 }
 
-# Circuit breaker implementation 
+# Circuit breaker implementation and testing
+
 Configurations for circuitbreaker is countbased and circuit will open 40% failures 
 resilience4j.circuitbreaker.instances.getInvoiceCB.failure-rate-threshold=40
 resilience4j.circuitbreaker.instances.getInvoiceCB.sliding-window-size=5
@@ -82,6 +83,30 @@ resilience4j.circuitbreaker.instances.getInvoiceCB.minimum-number-of-calls=5
 resilience4j.circuitbreaker.instances.getInvoiceCB.automatic-transition-from-open-to-half-open-enabled=true
 resilience4j.circuitbreaker.instances.getInvoiceCB.permitted-number-of-calls-in-half-open-state=1
 resilience4j.circuitbreaker.instances.getInvoiceCB.wait-duration-in-open-state=1s
+
+Please use the 400 - PUT_UPDATE_USER_DETAILS_(Circuit Breaker) to test the circuit breaker
+drop the user table by accessing h2 db using http://localhost:8080/h2-console
+DROP TABLE ING_USER ;
+After successful table drop invoke the test.
+expected result:
+{
+    "message": "Thanks for your request, We appologise for the issue, please come back later",
+    "errorCode": "SYS_000",
+    "details": [
+        "Circuit Breaker-updateUserFallback"
+    ]
+}
+
+{
+    "message": "Thanks for your request, We appologise for the issue, please come back later",
+    "errorCode": "SYS_000",
+    "details": [
+        "Circuit Breaker-getUserFallback"
+    ]
+}
+
+# Implement the entry/exit logging
+Refer LoggingAspect.java @Around applied on application package pointcuts
 
 
 
