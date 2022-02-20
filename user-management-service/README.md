@@ -79,18 +79,41 @@ com
              
 src/test/java
 
-com
- +- ing
-     +- usermanagement
-         +- BaseTest.java
-     +- controller
-         +- UserControllerTest.java
-     +- service
-         +- UserManagementServiceTest.java
-     +- repository
-         +- UserManagementRespositoryTest.java
-     +- contract
-         +- UserManagementContractTest.java 
+.
+└── com
+    └── ing
+        └── usermanagement
+            ├── UserManagementServiceApplication.java
+            ├── aop
+            │   └── LoggingAspect.java
+            ├── controller
+            │   └── UserController.java
+            ├── dto
+            │   ├── AddressDto.java
+            │   ├── ErrorDto.java
+            │   └── UserDto.java
+            ├── exception
+            │   ├── CustomExceptionHandler.java
+            │   ├── DataBaseServiceUnavailableException.java
+            │   ├── ResourceNotFoundException.java
+            │   └── ServiceApiException.java
+            ├── mapper
+            │   └── UserMapperUtil.java
+            ├── model
+            │   ├── Address.java
+            │   ├── BaseModel.java
+            │   └── User.java
+            ├── repository
+            │   └── UserRepository.java
+            ├── security
+            │   ├── SecurityConfig.java
+            │   └── UserManagementAuthenticationEntryPoint.java
+            └── service
+                ├── UserManagementService.java
+                └── impl
+                    └── UserManagementServiceImpl.java
+
+
 
          
 Assumptions and Approaches    
