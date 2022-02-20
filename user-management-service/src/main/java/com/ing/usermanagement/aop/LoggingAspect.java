@@ -22,9 +22,7 @@ public class LoggingAspect {
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-    /**
-     * Pointcut that matches all Spring beans in the application's main packages.
-     */
+    
     @Pointcut("within(com.ing.usermanagement.controller..*)" +
         " || within(com.ing.usermanagement.service..*)" + 
         " || within(com.ing.usermanagement.repository..*)")
@@ -32,13 +30,7 @@ public class LoggingAspect {
         // Method is empty as this is just a Pointcut, the implementations are in the advices.
     }
     
-	/**
-     * Advice that logs when a method is entered and exited.
-     *
-     * @param joinPoint join point for advice
-     * @return result
-     * @throws Throwable throws IllegalArgumentException
-     */
+	
     @Around("applicationPackagePointcut()")
     public Object logAround(ProceedingJoinPoint joinPoint) throws Throwable {
         if (log.isDebugEnabled()) {

@@ -10,7 +10,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.google.common.base.Optional;
 import com.ing.usermanagement.BaseTest;
 import com.ing.usermanagement.dto.UserDto;
 import com.ing.usermanagement.exception.ResourceNotFoundException;

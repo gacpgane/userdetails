@@ -1,0 +1,135 @@
+{
+  "provider": {
+    "name": "UserDetailsService"
+  },
+  "consumer": {
+    "name": "consumerUserDetails"
+  },
+  "interactions": [
+    {
+      "description": "invalid user credentials",
+      "request": {
+        "method": "GET",
+        "path": "/api/userdetails/1232854"
+      },
+      "response": {
+        "status": 401,
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "providerStates": [
+        {
+          "name": "Get User Details"
+        }
+      ]
+    },
+    {
+      "description": "valid user id from provider",
+      "request": {
+        "method": "GET",
+        "path": "/api/userdetails/1232854"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "empid": "1232854",
+          "address": {
+            "city": "Sydney",
+            "street": "12345 holling rd",
+            "postcode": 2000,
+            "state": "nsw"
+          },
+          "gender": "male",
+          "firstn": "test",
+          "title": "MR",
+          "lastname": "tsetlast"
+        },
+        "matchingRules": {
+          "body": {
+            "$.title": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.firstn": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.lastname": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.gender": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.empid": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.address.street": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.address.city": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.address.state": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            }
+          }
+        }
+      },
+      "providerStates": [
+        {
+          "name": "Get User Details"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "4.1.7"
+    }
+  }
+}

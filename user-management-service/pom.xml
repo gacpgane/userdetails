@@ -44,23 +44,15 @@
 		</dependency>
 
 
-		<dependency>
-			<groupId>au.com.dius</groupId>
-			<artifactId>pact-jvm-consumer-java8</artifactId>
-			<version>4.0.9</version>
-			<scope>test</scope>
-		</dependency>
+		 
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-			<!-- <exclusions> <exclusion> <groupId>com.vaadin.external.google</groupId> 
-				<artifactId>android-json</artifactId> </exclusion> </exclusions> -->
+
 		</dependency>
 
-		<!-- <dependency> <groupId>au.com.dius.pact.consumer</groupId> <artifactId>junit5</artifactId> 
-			<version>4.1.7</version> <scope>test</scope> </dependency> -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
@@ -84,7 +76,22 @@
 			<version>2.0.1.Final</version>
 		</dependency>
 
+		 
+		<dependency>
+			<groupId>au.com.dius.pact.provider</groupId>
+			<artifactId>junit5spring</artifactId>
+			<version>4.1.17</version>
+			<scope>test</scope>
+		</dependency>
+		
+		
 
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest</artifactId>
+			<version>2.2</version>
+			<scope>test</scope>
+		</dependency>
 
 
 	</dependencies>
@@ -115,14 +122,23 @@
 							<version>1.4.2.Final</version>
 						</path>
 					</annotationProcessorPaths>
-					<!-- <systemPropertyVariables> <pact.rootDir>target/mypacts</pact.rootDir> 
-						</systemPropertyVariables> -->
+
 				</configuration>
 			</plugin>
-			<!-- <plugin> <groupId>au.com.dius.pact.provider</groupId> <artifactId>maven</artifactId> 
-				<version>4.1.17</version> <configuration> <pactBrokerUrl>http://localhost:9292</pactBrokerUrl> 
-				<pactBrokerUsername>pact_workshop</pactBrokerUsername> <pactBrokerPassword>pact_workshop</pactBrokerPassword> 
-				</configuration> </plugin> -->
+			<plugin>
+				<groupId>au.com.dius.pact.provider</groupId>
+				<artifactId>maven</artifactId>
+				<version>4.1.17</version>
+				<configuration>
+					<pactBrokerUrl>http://localhost:9292</pactBrokerUrl>
+					<pactBrokerUsername>pact_userdetails</pactBrokerUsername>
+					<pactBrokerPassword>pact_userdetails</pactBrokerPassword>
+					<tags>
+						<tag>prod</tag>
+						<tag>test</tag>
+					</tags>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
