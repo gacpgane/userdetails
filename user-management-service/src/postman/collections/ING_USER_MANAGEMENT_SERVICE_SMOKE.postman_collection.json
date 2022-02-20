@@ -1,17 +1,32 @@
 {
 	"info": {
-		"_postman_id": "cbbd9683-3b1b-4e6f-98f6-da4ce25718fb",
+		"_postman_id": "73979167-fe78-44cc-8f8b-55171df6c28f",
 		"name": "ING_USER_MANAGEMENT_SERVICE_SMOKE",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "get userdetails",
+			"name": "200 - GET_USER_DETAILS",
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "user123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user123",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/userdetails/1",
+					"raw": "http://localhost:8080/api/userdetails/1232854",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -20,20 +35,143 @@
 					"path": [
 						"api",
 						"userdetails",
-						"1"
+						"1232854"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "update userdetails",
+			"name": "401 - GET_USER_DETAILS",
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "user123",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "user12",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/userdetails/1232854",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"userdetails",
+						"1232854"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "400 - GET_USER_DETAILS_(invalid userid)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "user123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user123",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/userdetails/1232854fef",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"userdetails",
+						"1232854fef"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "404 - GET_USER_DETAILS_(usernot found)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "user123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user123",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/userdetails/123",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"userdetails",
+						"123"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "200 - PUT_UPDATE_USER_DETAILS",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
 				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"title\": \"MR\",\n    \"firstn\": \"Mark\",\n    \"gender\": \"MALE\",\n    \"empid\": 123,\n    \"address\": {\n        \"street\": \"Tallong\",\n        \"city\": \"Tollong\",\n        \"state\": \"AU\",\n        \"postcode\": 343\n    }\n}",
+					"raw": "{\n    \"title\": \"mrs\",\n    \"firstn\": \"Rossie\",\n    \"gender\": \"female\",\n    \"empid\": \"1232856\",\n    \"address\": {\n        \"street\": \"Charlotte Street\",\n        \"city\": \"Brisbane\",\n        \"state\": \"QlD\",\n        \"postcode\": 4412\n    }\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -41,7 +179,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/userdetails/1",
+					"raw": "http://localhost:8080/api/userdetails/1232856",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -50,7 +188,187 @@
 					"path": [
 						"api",
 						"userdetails",
-						"1"
+						"1232856"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "401 - PUT_UPDATE_USER_DETAILS",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "adm",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "adm",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"mrs\",\n    \"firstn\": \"Rossie\",\n    \"gender\": \"female\",\n    \"empid\": \"1232856\",\n    \"address\": {\n        \"street\": \"Charlotte Street\",\n        \"city\": \"Brisbane\",\n        \"state\": \"QlD\",\n        \"postcode\": 4412\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/userdetails/1232856",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"userdetails",
+						"1232856"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "400 - PUT_UPDATE_USER_DETAILS_(Jnvalid userid)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"mrs\",\n    \"firstn\": \"Rossie\",\n    \"gender\": \"female\",\n    \"empid\": \"1232856\",\n    \"address\": {\n        \"street\": \"Charlotte Street\",\n        \"city\": \"Brisbane\",\n        \"state\": \"QlD\",\n        \"postcode\": 4412\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/userdetails/1232856fwef",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"userdetails",
+						"1232856fwef"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "404 - PUT_UPDATE_USER_DETAILS_(user not found)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"mrs\",\n    \"firstn\": \"Rossie\",\n    \"gender\": \"female\",\n    \"empid\": \"1232856\",\n    \"address\": {\n        \"street\": \"Charlotte Street\",\n        \"city\": \"Brisbane\",\n        \"state\": \"QlD\",\n        \"postcode\": 4412\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/userdetails/12",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"userdetails",
+						"12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "400 - PUT_UPDATE_USER_DETAILS_(invalid request)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"mrs\",\n    \"firstn\": \"Rossie\",\n    \"gender\": \"female\",\n    \"address\": {\n        \"street\": \"Charlotte Street\",\n        \"city\": \"Brisbane\",\n        \"state\": \"QlD\",\n        \"postcode\": 4412\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/userdetails/1232856",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"userdetails",
+						"1232856"
 					]
 				}
 			},
