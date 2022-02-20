@@ -1,15 +1,15 @@
 # Usermanagement REST Endpoints
-This project consits of two microservices 
+This project consists of two microservices 
 - Get User Details
 - Update User Details
 
 # Building the application
-Pre-Requisits 
+Pre-Requisites 
 Java 8
 Maven 3.8.4
 
 # Running the application
-Please run following command to start the services
+Please run the following command to start the services
 cd user-management-service
 mvn spring-boot:run
 
@@ -21,7 +21,7 @@ PUT http://localhost:8080/api/userdetails/{id}
 Use Postman collection under path src/postman/collections to test the application
 ING_USER_MANAGEMENT_SERVICE_SMOKE.postman_collection.json
 
-Select Authorization type as Basci Auth
+Select Authorisation type as Basic Auth
 
 For GET API 
 use user credentials 
@@ -41,22 +41,23 @@ password: admin
 url: http://localhost:8080/h2-console
 
 # Assumptions and Approaches 
-empid field is mapped to data type NUMERIC(10), because it's mentioned that to validate the user id to have only numeric. Given empid in the payload is length of 7 and above 1 million
+empid field is mapped to data type NUMERIC(10), because it's mentioned that to validate the user id to have only numeric. 
+Given empid in the payload is length of 7 and above 1 million
 1000000
 1232854
-therefore selecting a numeric value size 10
+therefore selecting a numeric value size  as 10
 
-EmpId considered as unique and further seperate index added to the column, however unique constrain also creats an index, but creating seperate index will give the felxibility in selecting index types based on the database. 
+EmpId has been considered as unique and further separate index added to the column, however unique constrain also creates an index, but creating a separate index will give the flexibility in selecting index types based on the database. 
 
  
 other fields data type and length values are selected to satisfy minimum space usage of DB and consideration of practical lengths ex:postcode 
 
-all the values coming from client will be stored as it is in the database and there will be no application of changing text to upper or lower case.
+All the values coming from the client will be stored as it is in the database, and there will be no application of changing text to upper or lower case.
 ex: mr -> mr, male->male , female->female
  
 
 Error message structure
-errorCode introduced mainly to utilise in observability platform integration and build better insights on application behaviour 
+errorCode was introduced mainly to utilise in observability platform integration and build better insights on application behaviour 
 {
     "message": "Invalid Request",
     "errorCode": "RC_INVR",
@@ -87,8 +88,8 @@ resilience4j.circuitbreaker.instances.getInvoiceCB.wait-duration-in-open-state=1
 Please use the 400 - PUT_UPDATE_USER_DETAILS_(Circuit Breaker) to test the circuit breaker
 drop the user table by accessing h2 db using http://localhost:8080/h2-console
 DROP TABLE ING_USER ;
-After successful table drop invoke the test.
-expected result:
+After a successful table drop, please invoke the test.
+Expected result:
 {
     "message": "Thanks for your request, We appologise for the issue, please come back later",
     "errorCode": "SYS_000",
@@ -98,7 +99,7 @@ expected result:
 }
 
 {
-    "message": "Thanks for your request, We appologise for the issue, please come back later",
+    "message": "Thanks for your request, We apologise for the issue, please come back later",
     "errorCode": "SYS_000",
     "details": [
         "Circuit Breaker-getUserFallback"
