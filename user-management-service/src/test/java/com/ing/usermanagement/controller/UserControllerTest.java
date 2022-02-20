@@ -71,14 +71,11 @@ public class UserControllerTest extends BaseTest{
 		
 	    ResponseEntity<UserDto> response = restTemplate
 				.getForEntity(new URL("http://localhost:" + port + "/api/userdetails/23234").toString(), UserDto.class);
-	    UserDto dto=getUserDto();
-		 
+	     
 	    assertEquals(response.getBody().getFirstn(),"John");
 		assertEquals(response.getBody().getEmpid(),"23234");
 		
 	}
 	
 	
-	 
-
 }

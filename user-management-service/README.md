@@ -53,8 +53,35 @@ other fields data type and length values are selected to satisfy minimum space u
 
 all the values coming from client will be stored as it is, there will no application of changing text to upper or lower case.
 ex: mr -> mr, male->male , female->female
+ 
 
-if user updates employee id ,client should update the api url path.
+Error message structure
+errorCode is mainly to utilise in observability platform integration and build better insights on application behaviour 
+{
+    "message": "Invalid Request",
+    "errorCode": "RC_INVR",
+    "details": [
+        "gender: Gender is required"
+    ]
+}
+
+{
+    "message": "Invalid Parameter Type",
+    "errorCode": "RC_001",
+    "details": [
+        "empid: 1232857wefw"
+    ]
+}
+
+# Circuit breaker implementation 
+Configurations for circuitbreaker is countbased and circuit will open 40% failures 
+resilience4j.circuitbreaker.instances.getInvoiceCB.failure-rate-threshold=40
+resilience4j.circuitbreaker.instances.getInvoiceCB.sliding-window-size=5
+resilience4j.circuitbreaker.instances.getInvoiceCB.sliding-window-type=COUNT_BASED
+resilience4j.circuitbreaker.instances.getInvoiceCB.minimum-number-of-calls=5
+resilience4j.circuitbreaker.instances.getInvoiceCB.automatic-transition-from-open-to-half-open-enabled=true
+resilience4j.circuitbreaker.instances.getInvoiceCB.permitted-number-of-calls-in-half-open-state=1
+resilience4j.circuitbreaker.instances.getInvoiceCB.wait-duration-in-open-state=1s
 
 
 

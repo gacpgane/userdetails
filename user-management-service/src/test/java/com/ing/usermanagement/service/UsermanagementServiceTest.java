@@ -10,6 +10,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.google.common.base.Optional;
 import com.ing.usermanagement.BaseTest;
 import com.ing.usermanagement.dto.UserDto;
 import com.ing.usermanagement.exception.ResourceNotFoundException;
@@ -32,7 +33,7 @@ public class UsermanagementServiceTest extends BaseTest{
 	public void setup() {
 		Mockito.when(userRepository.findByEmployeeId(1232854l)).thenReturn(getUser());
 		Mockito.when(userRepository.findByEmployeeId(2232854l)).thenThrow(EntityNotFoundException.class);
-		Mockito.when(userRepository.save(Mockito.any(User.class))).thenReturn(getUser());
+		Mockito.when(userRepository.save(Mockito.any(User.class))).thenReturn(getUser().get());
 	}
 
 	@Test
@@ -61,7 +62,7 @@ public class UsermanagementServiceTest extends BaseTest{
 	@Test
 	public void shouldGetUserNotFound() {
 		try {
-			UserDto dto = service.getUser(2232854l);
+			UserDto dto = service.getUser(223l);
 		} catch (ResourceNotFoundException e) {
 			Assertions.assertThat(e.getMessage().equals("Unable to find the user")).isTrue();
 		}

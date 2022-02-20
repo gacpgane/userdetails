@@ -39,8 +39,7 @@ public class UserManagementServiceImpl implements UserManagementService{
 	@CircuitBreaker(name = "updateUser", fallbackMethod = "updateUserFallback")
 	@Transactional
 	public UserDto updateUser(Long empId,UserDto userDto) {
-		try{
-			User user= userRepository.findByEmployeeId(empId);
+			User user = userRepository.findByEmployeeId(empId).orElseThrow(()-> new ResourceNotFoundException("Unable to find the user"));
 			user.setTitle(userDto.getTitle());
 			user.setFirstName(userDto.getFirstn());
 			user.setGender(userDto.getGender());
@@ -52,22 +51,18 @@ public class UserManagementServiceImpl implements UserManagementService{
 			}
 			user=userRepository.save(user);
 			return UserMapperUtil.toUserDto(user,new UserDto());
-		}catch (EntityNotFoundException e) {
-			throw new ResourceNotFoundException("Unable to find the user");
-		}
 	}
 	
 	
 	@Override
 	@CircuitBreaker(name = "getUser", fallbackMethod = "getUserFallback")
 	public UserDto getUser(Long empId) {
-		try {
-			User user = userRepository.findByEmployeeId(empId);
+		 
+			User user = userRepository.findByEmployeeId(empId).orElseThrow(()-> new ResourceNotFoundException("Unable to find the user"));
+			
 			UserDto userDto = UserMapperUtil.toUserDto(user, new UserDto());
 			return userDto;
-		} catch (EntityNotFoundException e) {
-			throw new ResourceNotFoundException("Unable to find the user");
-		}
+		
 
 	}
 

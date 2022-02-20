@@ -3,6 +3,8 @@
  */
 package com.ing.usermanagement.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,7 +40,7 @@ public class UserController {
 	}
 
 	@PutMapping("/userdetails/{empid}")
-	public ResponseEntity<Object> updateUserDetails(@PathVariable("empid") long empId, @RequestBody UserDto userDto) {	 
+	public ResponseEntity<Object> updateUserDetails(@PathVariable("empid") long empId,@Valid @RequestBody  UserDto userDto) {	 
 			UserDto dto=userManagementService.updateUser(empId, userDto);	
 			return new ResponseEntity<>(userDto, HttpStatus.OK);
 	}

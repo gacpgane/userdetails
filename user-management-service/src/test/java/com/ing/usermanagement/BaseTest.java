@@ -1,5 +1,7 @@
 package com.ing.usermanagement;
 
+import java.util.Optional;
+
 import com.ing.usermanagement.dto.AddressDto;
 import com.ing.usermanagement.dto.UserDto;
 import com.ing.usermanagement.model.Address;
@@ -7,7 +9,7 @@ import com.ing.usermanagement.model.User;
 
 public class BaseTest {
 
-	public User getUser() {
+	public Optional<User> getUser() {
 		User user1 = new User();
 		user1.setFirstName("Dani");
 		user1.setTitle("Mr");
@@ -21,7 +23,7 @@ public class BaseTest {
 		address.setState("NSW");
 		address.setStreet("Abercrombie Street");
 		user1.setAddress(address);
-		return user1;
+		return Optional.of(user1);
 	}
 
 	public UserDto getUserDto() {

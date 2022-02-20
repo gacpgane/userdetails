@@ -14,7 +14,6 @@ import javax.validation.constraints.NotNull;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown=true)
-
 public class UserDto {
 
 	private static final long serialVersionUID = 1L;

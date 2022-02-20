@@ -3,6 +3,8 @@
  */
 package com.ing.usermanagement.repository;
  
+import java.util.Optional;
+
 /**
  * @author prabuddha
  *
@@ -15,5 +17,5 @@ import com.ing.usermanagement.model.User;
 @Transactional(readOnly = true) 
 public interface UserRepository extends JpaRepository<User, Long>{
 
-	 User findByEmployeeId(Long id);
+	 Optional<User> findByEmployeeId(Long id);
 }

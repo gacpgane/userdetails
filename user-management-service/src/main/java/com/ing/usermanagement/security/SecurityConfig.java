@@ -54,5 +54,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers(HttpMethod.GET, "api/userdetails/**")
 				.access("hasAuthority('READ_DATA') and isAuthenticated()").and().csrf().disable();
 
-	}
+		/*
+		 * http.authorizeRequests().antMatchers("/").permitAll().and()
+		 * .authorizeRequests().antMatchers("/console/**").permitAll().and().
+		 * authorizeHttpRequests().antMatchers("/h2-ui/**").permitAll();
+		 */}
 }
