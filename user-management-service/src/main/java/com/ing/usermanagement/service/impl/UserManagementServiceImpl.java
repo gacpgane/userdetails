@@ -38,13 +38,13 @@ public class UserManagementServiceImpl implements UserManagementService{
 	@Override
 	@CircuitBreaker(name = "updateUser", fallbackMethod = "updateUserFallback")
 	@Transactional
-	public UserDto updateUser(Long id,UserDto userDto) {
+	public UserDto updateUser(Long empId,UserDto userDto) {
 		try{
-			User user= userRepository.getById(id);
+			User user= userRepository.findByEmployeeId(empId);
 			user.setTitle(userDto.getTitle());
 			user.setFirstName(userDto.getFirstn());
 			user.setGender(userDto.getGender());
-			user.setEmployeeId(userDto.getEmpid());
+			user.setEmployeeId(Long.valueOf(userDto.getEmpid()));
 			Address address=user.getAddress();
 			if(address!=null){
 				address.setCity(userDto.getAddressDto().getCity());
@@ -60,9 +60,9 @@ public class UserManagementServiceImpl implements UserManagementService{
 	
 	@Override
 	@CircuitBreaker(name = "getUser", fallbackMethod = "getUserFallback")
-	public UserDto getUser(Long id) {
+	public UserDto getUser(Long empId) {
 		try {
-			User user = userRepository.getById(id);
+			User user = userRepository.findByEmployeeId(empId);
 			UserDto userDto = UserMapperUtil.toUserDto(user, new UserDto());
 			return userDto;
 		} catch (EntityNotFoundException e) {

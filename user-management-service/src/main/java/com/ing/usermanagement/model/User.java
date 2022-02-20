@@ -27,7 +27,7 @@ public class User extends BaseModel{
 	private String gender;
 	
 	@Column(name="EMPLOYEE_ID")
-	private String employeeId;
+	private long employeeId;
 	
 	 
 	@OneToOne(cascade = CascadeType.ALL)
@@ -66,11 +66,11 @@ public class User extends BaseModel{
 		this.gender = gender;
 	}
 
-	public String getEmployeeId() {
+	public long getEmployeeId() {
 		return employeeId;
 	}
 
-	public void setEmployeeId(String employeeId) {
+	public void setEmployeeId(long employeeId) {
 		this.employeeId = employeeId;
 	}
 

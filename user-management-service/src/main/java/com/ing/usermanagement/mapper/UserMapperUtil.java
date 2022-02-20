@@ -14,7 +14,7 @@ public class UserMapperUtil {
 
 	public static User toUser(UserDto dto,User user) {
 		user.setTitle(dto.getTitle());
-		user.setEmployeeId(dto.getEmpid());
+		user.setEmployeeId(Long.valueOf(dto.getEmpid()));
 		user.setFirstName(dto.getFirstn());
 		user.setGender(dto.getGender());
 		
@@ -30,7 +30,7 @@ public class UserMapperUtil {
 	 
 	
 	public static UserDto toUserDto(User user,UserDto userDto) {
-		userDto.setEmpid(user.getEmployeeId());
+		userDto.setEmpid(String.valueOf(user.getEmployeeId()));
 		userDto.setFirstn(user.getFirstName());
 		userDto.setGender(user.getGender());
 		userDto.setTitle(user.getTitle());

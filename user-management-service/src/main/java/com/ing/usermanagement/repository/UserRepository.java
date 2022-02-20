@@ -15,5 +15,5 @@ import com.ing.usermanagement.model.User;
 @Transactional(readOnly = true) 
 public interface UserRepository extends JpaRepository<User, Long>{
 
-	 
+	 User findByEmployeeId(Long id);
 }

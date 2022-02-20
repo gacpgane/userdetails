@@ -40,6 +40,24 @@ username: admin
 password: admin
 url: http://localhost:8080/h2-ui
 
+# Assumptions and Approaches 
+empid field is mapped to data type NUMERIC(10), because it's mentioned that to validate the user id to have only numeric. Given empid in the payload is length of 7 and above 1 million
+1000000
+1232854
+therefore selecting a numeric value size 10
+
+EmpId considered as unique and further seperate index added to the column, however unique constrain also creats an index, but creating seperate index will give the felxibility in selecting index types based on the database. 
+
+ 
+other fields data type and length values are selected to satisfy minimum space usage of DB and consideration of practical lengths ex:postcode 
+
+all the values coming from client will be stored as it is, there will no application of changing text to upper or lower case.
+ex: mr -> mr, male->male , female->female
+
+if user updates employee id ,client should update the api url path.
+
+
+
 # Project Structure
 
 ├── HELP.md
@@ -105,11 +123,8 @@ url: http://localhost:8080/h2-ui
                         │   └── UserManagementRepositoryTest.java
                         └── service
 
-.
-
-
 
          
-Assumptions and Approaches    
+   
          
           

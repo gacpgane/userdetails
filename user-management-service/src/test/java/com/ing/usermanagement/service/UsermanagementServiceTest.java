@@ -30,8 +30,8 @@ public class UsermanagementServiceTest extends BaseTest{
 
 	@BeforeEach
 	public void setup() {
-		Mockito.when(userRepository.getById(1l)).thenReturn(getUser());
-		Mockito.when(userRepository.getById(100l)).thenThrow(EntityNotFoundException.class);
+		Mockito.when(userRepository.findByEmployeeId(1232854l)).thenReturn(getUser());
+		Mockito.when(userRepository.findByEmployeeId(2232854l)).thenThrow(EntityNotFoundException.class);
 		Mockito.when(userRepository.save(Mockito.any(User.class))).thenReturn(getUser());
 	}
 
@@ -40,7 +40,7 @@ public class UsermanagementServiceTest extends BaseTest{
 		System.out.println("-------------shouldGetUser------------------");
 		UserDto dto;
 		if (service != null) {
-			dto = service.getUser(1l);
+			dto = service.getUser(1232854l);
 		} else {
 			dto = null;
 		}
@@ -61,7 +61,7 @@ public class UsermanagementServiceTest extends BaseTest{
 	@Test
 	public void shouldGetUserNotFound() {
 		try {
-			UserDto dto = service.getUser(100l);
+			UserDto dto = service.getUser(2232854l);
 		} catch (ResourceNotFoundException e) {
 			Assertions.assertThat(e.getMessage().equals("Unable to find the user")).isTrue();
 		}
@@ -71,7 +71,7 @@ public class UsermanagementServiceTest extends BaseTest{
 	@Test
 	public void shouldUpdateUser() {
 		UserDto dto = getUserDto();
-		dto = service.updateUser(1l, dto);
+		dto = service.updateUser(1232854l, dto);
 		assertThat(dto).isNotNull();
 		assertThat(dto.getAddressDto()).isNotNull();
 		assertThat(dto.getAddressDto().getCity()).isNotNull();

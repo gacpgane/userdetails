@@ -31,15 +31,15 @@ public class UserController {
 	@Autowired
 	private UserManagementService userManagementService;
 
-	@GetMapping("/userdetails/{id}")
-	public ResponseEntity<Object> getUserDetails(@PathVariable("id") long id) {
-			UserDto userDto = userManagementService.getUser(id);
+	@GetMapping("/userdetails/{empid}")
+	public ResponseEntity<Object> getUserDetails(@PathVariable("empid") long empId) {
+			UserDto userDto = userManagementService.getUser(empId);
 			return new ResponseEntity<>(userDto, HttpStatus.OK);
 	}
 
-	@PutMapping("/userdetails/{id}")
-	public ResponseEntity<Object> updateUserDetails(@PathVariable("id") long id, @RequestBody UserDto userDto) {	 
-			UserDto dto=userManagementService.updateUser(id, userDto);	
+	@PutMapping("/userdetails/{empid}")
+	public ResponseEntity<Object> updateUserDetails(@PathVariable("empid") long empId, @RequestBody UserDto userDto) {	 
+			UserDto dto=userManagementService.updateUser(empId, userDto);	
 			return new ResponseEntity<>(userDto, HttpStatus.OK);
 	}
 	

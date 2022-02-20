@@ -13,7 +13,7 @@ public class BaseTest {
 		user1.setTitle("Mr");
 		user1.setGender("MALE");
 		user1.setId(1l);
-		user1.setEmployeeId("12222");
+		user1.setEmployeeId(1232854l);
 		Address address = new Address();
 		address.setId(1);
 		address.setCity("Darlington");
@@ -26,7 +26,7 @@ public class BaseTest {
 
 	public UserDto getUserDto() {
 		UserDto userDto = new UserDto();
-		userDto.setEmpid("1234");
+		userDto.setEmpid("1232854");
 		userDto.setFirstn("Dayle");
 		userDto.setGender("MALE");
 		userDto.setTitle("MR");

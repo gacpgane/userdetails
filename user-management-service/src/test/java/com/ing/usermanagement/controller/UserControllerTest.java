@@ -39,17 +39,15 @@ public class UserControllerTest extends BaseTest{
 		log.debug("-------- UserControllerTest getUserDetails -----------");
 		RestTemplate restTemplate= new RestTemplate();
 		ResponseEntity<UserDto> response = restTemplate
-				.getForEntity(new URL("http://localhost:" + port + "/api/userdetails/1").toString(), UserDto.class);
-		assertEquals(response.getBody().getFirstn(),"Mark");
-		assertEquals(response.getBody().getEmpid(),"1234");
+				.getForEntity(new URL("http://localhost:" + port + "/api/userdetails/1232854").toString(), UserDto.class);
+		assertEquals(response.getBody().getEmpid(),"1232854");
 		
 	}
 
 	@Test
 	public void updateUserDetails() throws RestClientException, MalformedURLException {
 		RestTemplate restTemplate= new RestTemplate();
-		String updatePersonUrl = "http://localhost:" + port + "/api/userdetails/2";
-    
+		 
 		HttpHeaders headers = new HttpHeaders();
 	    headers.setContentType(MediaType.APPLICATION_JSON);
 	    JSONObject user = new JSONObject();
@@ -69,10 +67,10 @@ public class UserControllerTest extends BaseTest{
 	    HttpEntity<String> request = 
 	    	      new HttpEntity<String>(user.toString(), headers);
 	     
-	    restTemplate.put(new URL("http://localhost:" + port + "/api/userdetails/2").toString(), request, ""); 
+	    restTemplate.put(new URL("http://localhost:" + port + "/api/userdetails/1232855").toString(), request, ""); 
 		
 	    ResponseEntity<UserDto> response = restTemplate
-				.getForEntity(new URL("http://localhost:" + port + "/api/userdetails/2").toString(), UserDto.class);
+				.getForEntity(new URL("http://localhost:" + port + "/api/userdetails/23234").toString(), UserDto.class);
 	    UserDto dto=getUserDto();
 		 
 	    assertEquals(response.getBody().getFirstn(),"John");
