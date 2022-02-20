@@ -112,7 +112,9 @@ UserControllerTest - e2e integration test
 UserManagementRepositoryTest - db integration test
 UsermanagementServiceTest - Junit test
 ING_USER_MANAGEMENT_SERVICE_SMOKE.postman_collection.json - smoke suite
-pact test - pending.
+pact test consumer contract generation and validation - consumer-user-management-service
+pact test provider validation was causing error, please uncomment PactVerificationTest to validate
+pact folder is located under user-management-service.
 
 # Basic User authentication and verification
 Use following test cases to validate this feature
@@ -129,6 +131,8 @@ Use following test cases to validate this feature
 ├── README.md
 ├── mvnw
 ├── mvnw.cmd
+├── pacts
+│   └── consumerUserDetails-UserDetailsService.json
 ├── pom.xml
 └── src
     ├── main
@@ -148,8 +152,7 @@ Use following test cases to validate this feature
     │   │               ├── exception
     │   │               │   ├── CustomExceptionHandler.java
     │   │               │   ├── DataBaseServiceUnavailableException.java
-    │   │               │   ├── ResourceNotFoundException.java
-    │   │               │   └── ServiceApiException.java
+    │   │               │   └── ResourceNotFoundException.java
     │   │               ├── mapper
     │   │               │   └── UserMapperUtil.java
     │   │               ├── model
@@ -160,6 +163,7 @@ Use following test cases to validate this feature
     │   │               │   └── UserRepository.java
     │   │               ├── security
     │   │               │   ├── SecurityConfig.java
+    │   │               │   ├── SecurityInterceptor.java
     │   │               │   └── UserManagementAuthenticationEntryPoint.java
     │   │               └── service
     │   │                   ├── UserManagementService.java
@@ -180,16 +184,12 @@ Use following test cases to validate this feature
                     └── usermanagement
                         ├── BaseTest.java
                         ├── contract
-                        │   ├── UserDetailsRequestResponsePact.java
-                        │   └── UsermanagementContractTest.java
+                        │   └── PactVerificationTest.java
                         ├── controller
                         │   └── UserControllerTest.java
                         ├── repository
                         │   └── UserManagementRepositoryTest.java
                         └── service
-
-
-         
-   
+                            └── UsermanagementServiceTest.java   
          
           
