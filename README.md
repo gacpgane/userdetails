@@ -2,11 +2,10 @@
 
 # Usermanagement REST Endpoints
 This project consists of two microservices 
-- Get User Details
-- Update User Details
+- Get User Details : GET http://localhost:8080/api/userdetails/{id}
+- Update User Details : PUT http://localhost:8080/api/userdetails/{id}
 
-# Building the application
-Pre-Requisites 
+# Pre-Requisites Building the application 
 Java 8
 Maven 3.8.4
 
@@ -14,10 +13,6 @@ Maven 3.8.4
 Please run the following command to start the services
 cd user-management-service
 mvn spring-boot:run
-
-# API Endpoints
-GET http://localhost:8080/api/userdetails/{id}
-PUT http://localhost:8080/api/userdetails/{id}
 
 # Testing the APIs using Postman + Basic Authentication
 Use Postman collection under path src/postman/collections to test the application
@@ -42,7 +37,7 @@ username: admin
 password: admin
 url: http://localhost:8080/h2-console
 
-# Assumptions and Approaches 
+# Assumptions and Approach 
 empid field is mapped to data type NUMERIC(10), because it's mentioned that to validate the user id to have only numeric. 
 Given empid in the payload is length of 7 and above 1 million
 1000000
@@ -119,9 +114,6 @@ UsermanagementServiceTest - Junit test
 ING_USER_MANAGEMENT_SERVICE_SMOKE.postman_collection.json - smoke suite
 pact test - pending.
 
-
-
-
 # Basic User authentication and verification
 Use following test cases to validate this feature
 401 - GET_USER_DETAILS  - correct username invalid password
@@ -129,8 +121,6 @@ Use following test cases to validate this feature
 401 - PUT_UPDATE_USER_DETAILS - incorrect username and password
 403 - PUT_UPDATE_USER_DETAILS - User with USER role not allowed
 200 - GET_USER_DETAILS(admin) - allowed for admin
-
-
 
 
 # Project Structure
